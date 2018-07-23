@@ -1,0 +1,74 @@
+PODS:
+  - Firebase (4.12.0):
+    - Firebase/Core (= 4.12.0)
+  - Firebase/Core (4.12.0):
+    - FirebaseAnalytics (= 4.1.0)
+    - FirebaseCore (= 4.0.19)
+  - FirebaseAnalytics (4.1.0):
+    - FirebaseCore (~> 4.0)
+    - FirebaseInstanceID (~> 2.0)
+    - "GoogleToolboxForMac/NSData+zlib (~> 2.1)"
+    - nanopb (~> 0.3)
+  - FirebaseCore (4.0.19):
+    - "GoogleToolboxForMac/NSData+zlib (~> 2.1)"
+  - FirebaseInstanceID (2.0.10):
+    - FirebaseCore (~> 4.0)
+  - GoogleToolboxForMac/Defines (2.1.4)
+  - "GoogleToolboxForMac/NSData+zlib (2.1.4)":
+    - GoogleToolboxForMac/Defines (= 2.1.4)
+  - nanopb (0.3.8):
+    - nanopb/decode (= 0.3.8)
+    - nanopb/encode (= 0.3.8)
+  - nanopb/decode (0.3.8)
+  - nanopb/encode (0.3.8)
+  - Toaster (2.1.1)
+  - ZappAnalyticsPluginsSDK (5.0.0):
+    - Toaster
+    - ZappPlugins
+  - ZappPlugins (6.0.0)
+
+DEPENDENCIES:
+  - Firebase (~> 4.12.0)
+  - "ZappAnalyticsPluginsSDK (from `git@github.com:applicaster/ZappAnalyticsPluginsSDK-iOS.git`, branch `master`)"
+  - "ZappPlugins (from `git@github.com:applicaster/ZappPlugins-iOS.git`, branch `plugins_split`)"
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - Firebase
+    - FirebaseAnalytics
+    - FirebaseCore
+    - FirebaseInstanceID
+    - GoogleToolboxForMac
+    - nanopb
+    - Toaster
+
+EXTERNAL SOURCES:
+  ZappAnalyticsPluginsSDK:
+    :branch: master
+    :git: "git@github.com:applicaster/ZappAnalyticsPluginsSDK-iOS.git"
+  ZappPlugins:
+    :branch: plugins_split
+    :git: "git@github.com:applicaster/ZappPlugins-iOS.git"
+
+CHECKOUT OPTIONS:
+  ZappAnalyticsPluginsSDK:
+    :commit: 5d508421895361808b1c8ea4fb99590dbdcae4e0
+    :git: "git@github.com:applicaster/ZappAnalyticsPluginsSDK-iOS.git"
+  ZappPlugins:
+    :commit: 349c733fe4f2841f2a5a9d041b1a0903396738a0
+    :git: "git@github.com:applicaster/ZappPlugins-iOS.git"
+
+SPEC CHECKSUMS:
+  Firebase: d7fdf40e4d6c841849c52919f437fd3a0009ded0
+  FirebaseAnalytics: 3dfae28d4a5e06f86c4fae830efc2ad3fadb19bc
+  FirebaseCore: ff49ebb37e0f63a570d78c4f1c1c0befe8659d5c
+  FirebaseInstanceID: 8d20d890d65c917f9f7d9950b6e10a760ad34321
+  GoogleToolboxForMac: 91c824d21e85b31c2aae9bb011c5027c9b4e738f
+  nanopb: 5601e6bca2dbf1ed831b519092ec110f66982ca3
+  Toaster: a6c9532de1ded8105e77376f7dffeb2e12b46dbb
+  ZappAnalyticsPluginsSDK: 7e0bf5623951348c66f7215408fe8d003686b2d3
+  ZappPlugins: f647991e4ec139a8dcd6c6fe9061ad65dc24ccb2
+
+PODFILE CHECKSUM: 6b5038a953970d020f48d9cf8a8e6187b8df8bd4
+
+COCOAPODS: 1.5.3
