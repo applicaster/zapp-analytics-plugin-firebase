@@ -188,9 +188,9 @@ open class APAnalyticsProviderFirebase: ZPAnalyticsProvider {
             let send = name.index(name.startIndex, offsetBy: 1)
             let sendvalue = String(name[send..<name.endIndex])
             if let prefix = LEGENT[name.getFirstCharacter! as String] {
-                return prefix + recursiveEncodeAlphanumericCharacters( eventName: sendvalue!)
+                return prefix + recursiveEncodeAlphanumericCharacters( eventName: sendvalue)
             }else{
-                return name.getFirstCharacter! + recursiveEncodeAlphanumericCharacters( eventName: sendvalue!)
+                return name.getFirstCharacter! + recursiveEncodeAlphanumericCharacters( eventName: sendvalue)
             }
         }
         return ""
