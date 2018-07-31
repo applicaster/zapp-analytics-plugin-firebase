@@ -15,7 +15,7 @@ Pod::Spec.new do |s|
   s.static_framework = true
 
   s.public_header_files = '**/*.h'
-  s.source_files = '**/*.{h,m,swift}', '"${PODS_ROOT}"/Firebase/**/*.{h,modulemap}'
+  s.source_files = 'ZappAnalyticsPluginFirebase/**/*.{h,m,swift}', '"${PODS_ROOT}"/Firebase/**/*.{h,modulemap}'
 
   s.xcconfig =  { 'CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES' => 'YES',
                           'FRAMEWORK_SEARCH_PATHS' => '$(inherited) "${PODS_ROOT}"/**',

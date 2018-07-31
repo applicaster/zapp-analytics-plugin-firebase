@@ -3,8 +3,7 @@
     "require_startup_execution": false,
     "class_name": "APAnalyticsProviderFirebase",
     "modules": [
-      "ZappAnalyticsPluginFirebase",
-      "ZappAnalyticsPlugins"
+      "ZappAnalyticsPluginFirebase"
     ],
     "plist": {
       "FirebaseScreenReportingEnabled": false
@@ -15,16 +14,16 @@
   ],
   "author_name": "Alex Zchut",
   "author_email": "a.zchut@applicaster.com",
-  "manifest_version": "4.0.0",
+  "manifest_version": "5.0.0",
   "name": "Firebase",
   "description": "Firebase provider",
   "identifier": "firebase_ios",
   "type": "analytics",
   "platform": "ios",
   "ui_builder_support": true,
-  "min_zapp_sdk": "7.0.0-Dev",
-  "dependency_name": "ZappAnalyticsPlugins/Firebase",
-  "dependency_version": "4.0.0",
+  "min_zapp_sdk": "7.0.1-Dev",
+  "dependency_name": "ZappAnalyticsPluginFirebase",
+  "dependency_version": "5.0.0",
   "whitelisted_account_ids": [
 
   ],
