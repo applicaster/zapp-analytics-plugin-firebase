@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = "ZappAnalyticsPluginFirebase"
-  s.version = '5.0.0'
+  s.version = '5.0.2'
   s.summary          = "ZappAnalyticsPluginFirebase"
   s.description      = <<-DESC
                         ZappAnalyticsPluginFirebase container.
@@ -14,11 +14,11 @@ Pod::Spec.new do |s|
   s.requires_arc = true
   s.static_framework = true
 
-  s.public_header_files = '**/*.h'
-  s.source_files = 'ZappAnalyticsPluginFirebase/**/*.{h,m,swift}', '"${PODS_ROOT}"/Firebase/**/*.{h,modulemap}'
+  s.public_header_files = 'ZappAnalyticsPluginFirebase/*.h'
+  s.source_files = 'ZappAnalyticsPluginFirebase/**/*.{h,m,swift}', '"${PODS_ROOT}"/Firebase/**/*.{h}'
 
   s.xcconfig =  { 'CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES' => 'YES',
-                          'FRAMEWORK_SEARCH_PATHS' => '$(inherited) "${PODS_ROOT}"/**',
+                          'FRAMEWORK_SEARCH_PATHS' => '$(inherited) "${PODS_ROOT}"/Firebase/**',
                           'OTHER_LDFLAGS' => '$(inherited) -objc -framework "FirebaseCore" -framework "FirebaseInstanceID" -framework "FirebaseAnalytics"',
                           'ENABLE_BITCODE' => 'YES',
                           'SWIFT_VERSION' => '4.1',

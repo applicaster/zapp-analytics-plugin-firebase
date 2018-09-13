@@ -22,15 +22,15 @@ PODS:
   - nanopb/decode (0.3.8)
   - nanopb/encode (0.3.8)
   - Toaster (2.1.1)
-  - ZappAnalyticsPluginsSDK (5.0.0):
+  - ZappAnalyticsPluginsSDK (5.1.1):
     - Toaster
-    - ZappPlugins
-  - ZappPlugins (6.0.0)
+    - ZappPlugins (~> 6.1.0)
+  - ZappPlugins (6.1.7)
 
 DEPENDENCIES:
   - Firebase (~> 4.12.0)
-  - "ZappAnalyticsPluginsSDK (from `git@github.com:applicaster/ZappAnalyticsPluginsSDK-iOS.git`, branch `master`)"
-  - "ZappPlugins (from `git@github.com:applicaster/ZappPlugins-iOS.git`, branch `plugins_split`)"
+  - ZappAnalyticsPluginsSDK (from `/Users/alex/Documents/Applicaster/Developing/Github/NewPlugins/Analytics/ZappAnalyticsPluginsSDK-iOS/ZappAnalyticsPluginsSDK.podspec`)
+  - ZappPlugins (from `/Users/alex/Documents/Applicaster/Developing/Github/NewPlugins/Analytics/ZappAnalyticsPluginsSDK-iOS/Submodules/ZappPlugins/ZappPlugins-Dev.podspec`)
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
@@ -44,19 +44,9 @@ SPEC REPOS:
 
 EXTERNAL SOURCES:
   ZappAnalyticsPluginsSDK:
-    :branch: master
-    :git: "git@github.com:applicaster/ZappAnalyticsPluginsSDK-iOS.git"
+    :path: "/Users/alex/Documents/Applicaster/Developing/Github/NewPlugins/Analytics/ZappAnalyticsPluginsSDK-iOS/ZappAnalyticsPluginsSDK.podspec"
   ZappPlugins:
-    :branch: plugins_split
-    :git: "git@github.com:applicaster/ZappPlugins-iOS.git"
-
-CHECKOUT OPTIONS:
-  ZappAnalyticsPluginsSDK:
-    :commit: b1e6e47038959334103a83b81342fd1bf2b9e8b9
-    :git: "git@github.com:applicaster/ZappAnalyticsPluginsSDK-iOS.git"
-  ZappPlugins:
-    :commit: b6f3dff77a744e0095e85f3dd269f5290eafbbb3
-    :git: "git@github.com:applicaster/ZappPlugins-iOS.git"
+    :path: "/Users/alex/Documents/Applicaster/Developing/Github/NewPlugins/Analytics/ZappAnalyticsPluginsSDK-iOS/Submodules/ZappPlugins/ZappPlugins-Dev.podspec"
 
 SPEC CHECKSUMS:
   Firebase: d7fdf40e4d6c841849c52919f437fd3a0009ded0
@@ -66,9 +56,9 @@ SPEC CHECKSUMS:
   GoogleToolboxForMac: 91c824d21e85b31c2aae9bb011c5027c9b4e738f
   nanopb: 5601e6bca2dbf1ed831b519092ec110f66982ca3
   Toaster: a6c9532de1ded8105e77376f7dffeb2e12b46dbb
-  ZappAnalyticsPluginsSDK: 7e0bf5623951348c66f7215408fe8d003686b2d3
-  ZappPlugins: f647991e4ec139a8dcd6c6fe9061ad65dc24ccb2
+  ZappAnalyticsPluginsSDK: 319cd159979fd6726cf6cf4bb2f2d8e3e843b779
+  ZappPlugins: 799f5f5df3f5962f3419df8b8dc7a62fb472dd7e
 
-PODFILE CHECKSUM: b17a482ab7099e46d614ba442e22c87271a109a7
+PODFILE CHECKSUM: d29e6533590c922c044e835916c2e0a8ffbffd08
 
 COCOAPODS: 1.5.3
