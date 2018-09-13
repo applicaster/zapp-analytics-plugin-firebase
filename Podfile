@@ -9,8 +9,7 @@ target 'ZappAnalyticsPluginFirebase' do
   use_frameworks!
 
   # Pods for ZappAnalyticsPluginChartbeat
-  pod 'ZappAnalyticsPluginsSDK', :path => '/Users/alex/Documents/Applicaster/Developing/Github/NewPlugins/Analytics/ZappAnalyticsPluginsSDK-iOS/ZappAnalyticsPluginsSDK.podspec'
-  pod 'ZappPlugins', :path => '/Users/alex/Documents/Applicaster/Developing/Github/NewPlugins/Analytics/ZappAnalyticsPluginsSDK-iOS/Submodules/ZappPlugins/ZappPlugins-Dev.podspec'
+  pod 'ZappAnalyticsPluginsSDK', '~> 5.0.0'
   pod 'Firebase', '~> 4.12.0'
 
   target 'ZappAnalyticsPluginFirebaseTests' do
