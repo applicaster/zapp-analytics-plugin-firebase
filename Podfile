@@ -9,8 +9,8 @@ target 'ZappAnalyticsPluginFirebase' do
   use_frameworks!
 
   # Pods for ZappAnalyticsPluginChartbeat
-  pod 'ZappAnalyticsPluginsSDK', '~> 5.0.0'
-  pod 'Firebase', '~> 4.12.0'
+  pod 'ZappAnalyticsPluginsSDK', '~> 6.0.0'
+  pod 'Firebase', '= 5.10.0'
 
   target 'ZappAnalyticsPluginFirebaseTests' do
     # Pods for testing
