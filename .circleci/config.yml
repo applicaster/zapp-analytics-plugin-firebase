@@ -58,11 +58,6 @@ jobs:
             fi
             git -C $SCRIPTS_LOCAL_FOLDER checkout $DEPLOY_VERSION
 
-      # Add know host relevant for Prosieben only
-      - run:
-          name: Add known hosts
-          command: $SCRIPTS_LOCAL_FOLDER/circleCi/addKnownHosts.sh
-
       # Prepare Bundler
       - restore_cache:
           name: Bundler - restore cache
@@ -81,19 +76,11 @@ jobs:
       # Restore Cocoapods cache, save cache on lower level, after pod update
       - restore_cache:
           name: CocoaPods - restore cache
-          key: Zapp-ZappAnalyticsPluginFirebase-CocoaPods-1
+          key: Zapp-ZappAnalyticsPluginFirebase-CocoaPods-2
 
       - run:
           name: CocoaPods - version
           command: bundle exec pod --version
-
-      - run:
-          name: Git - submodules update
-          command: |
-            git fetch
-            git checkout .
-            git submodule sync --recursive
-            git submodule update --init --recursive
 
       # Pod update
       - run:
@@ -103,16 +90,16 @@ jobs:
       # Cache CocoaPods
       - save_cache:
           name: CocoaPods - save cache
-          key: Zapp-ZappAnalyticsPluginFirebase-CocoaPods-1
+          key: Zapp-ZappAnalyticsPluginFirebase-CocoaPods-2
           paths:
             - "~/.cocoapods"
             - "Pods"
             - "Podfile.lock"
 
-      # Tests
-      - run:
-          name: Tests - start
-          command: bundle exec fastlane ios test
+      # # Tests
+      # - run:
+      #     name: Tests - start
+      #     command: bundle exec fastlane ios test
 
       # Deploy
       - deploy:
