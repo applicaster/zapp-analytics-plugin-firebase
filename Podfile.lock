@@ -17,11 +17,11 @@ PODS:
     - nanopb (~> 0.3)
   - FirebaseCore (5.1.5):
     - GoogleUtilities/Logger (~> 5.2)
-  - FirebaseInstanceID (3.2.2):
+  - FirebaseInstanceID (3.3.0):
     - FirebaseCore (~> 5.1)
     - GoogleUtilities/Environment (~> 5.3)
     - GoogleUtilities/UserDefaults (~> 5.3)
-  - GoogleAppMeasurement (5.2.0):
+  - GoogleAppMeasurement (5.3.0):
     - GoogleUtilities/AppDelegateSwizzler (~> 5.2)
     - GoogleUtilities/MethodSwizzler (~> 5.2)
     - GoogleUtilities/Network (~> 5.2)
@@ -45,16 +45,16 @@ PODS:
     - GoogleUtilities/Logger
   - GoogleUtilities/UserDefaults (5.3.4):
     - GoogleUtilities/Logger
-  - nanopb (0.3.8):
-    - nanopb/decode (= 0.3.8)
-    - nanopb/encode (= 0.3.8)
-  - nanopb/decode (0.3.8)
-  - nanopb/encode (0.3.8)
+  - nanopb (0.3.901):
+    - nanopb/decode (= 0.3.901)
+    - nanopb/encode (= 0.3.901)
+  - nanopb/decode (0.3.901)
+  - nanopb/encode (0.3.901)
   - Toaster (2.2.0.0)
   - ZappAnalyticsPluginsSDK (6.0.0):
     - Toaster
     - ZappPlugins
-  - ZappPlugins (7.1.3)
+  - ZappPlugins (7.1.5)
 
 DEPENDENCIES:
   - Firebase (= 5.10.0)
@@ -79,13 +79,13 @@ SPEC CHECKSUMS:
   Firebase: 6691d47562a780c26281ce8464518faafc90c610
   FirebaseAnalytics: 831f1f127f4a75698e9875a87bf7e2668730d953
   FirebaseCore: c6079de64c1a87000e52e9b408dddcadc901177f
-  FirebaseInstanceID: 78ba376fcd5b94c001f9999b2cbd3d1f1e56e78d
-  GoogleAppMeasurement: 2b3a023a61239c8d002e6e4fcf4abce8eddce0e0
+  FirebaseInstanceID: e2fa4cb35ef5558c200f7f0ad8a53e212215f93e
+  GoogleAppMeasurement: 5029d78f2b438bd30ffb44e6c558b57c21622727
   GoogleUtilities: abb092d2c12e817fa3e0e7b274987dd72fb86ec3
-  nanopb: 5601e6bca2dbf1ed831b519092ec110f66982ca3
+  nanopb: 2901f78ea1b7b4015c860c2fdd1ea2fee1a18d48
   Toaster: c06c2bb68c93d6017780220d5d76dc6ffdd14688
   ZappAnalyticsPluginsSDK: 1af2db8a8c2ef2cb15d3942f2ea8aefea97b2b3f
-  ZappPlugins: 2fe181e7c0a6bfb281a528bb27789c3cb656f25c
+  ZappPlugins: c7a0446ae13eebd47e6782d5d2a82b1ebdc0b3e5
 
 PODFILE CHECKSUM: c558ecfb58b26be3a9bbc106b85ba735738971a9
 
