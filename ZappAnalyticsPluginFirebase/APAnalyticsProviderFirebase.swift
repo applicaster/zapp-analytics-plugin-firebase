@@ -23,6 +23,27 @@ open class APAnalyticsProviderFirebase: ZPAnalyticsProvider {
     private var LEGENT_JSON : String = "{\" \":\"__\",\"_\":\"_0\",\"-\":\"_1\",\":\":\"_2\",\"'\":\"_3\",\".\":\"_4\",\",\":\"_5\",\"/\":\"_6\",\"\\\\\":\"_7\",\"(\":\"_8\",\")\":\"_A\",\"?\":\"_B\",\"\\\"\":\"_C\",\"!\":\"_D\",\"@\":\"_E\",\"#\":\"_F\",\"$\":\"_G\",\"%\":\"_H\",\"^\":\"_I\",\"&\":\"_J\",\"*\":\"_K\",\"=\":\"_M\",\"+\":\"_N\",\"~\":\"_L\",\"`\":\"_O\",\"|\":\"_P\",\";\":\"_Q\",\"[\":\"_R\",\"]\":\"_S\",\"}\":\"_T\",\"{\":\"_U\"}"
     
     
+    var isUserProfileEnabled = false
+    var isPiiFilteredOut = false
+    
+    //Firebase User Profile
+    struct UserProfile {
+        static let created = "$created"
+        static let email = "$email"
+        static let phone = "$phone"
+        static let firstName = "$first_name"
+        static let lastName = "$last_name"
+        static let name = "$name"
+        static let userName = "$username"
+        static let iOSDevices = "$ios_devices"
+    }
+    
+    //Json Keys
+    struct JsonKeys {
+        static let people = "people"
+        static let piiFilterOut = "filter_out_pii"
+    }
+    
     override open func getKey() -> String {
         return "firebase"
     }
@@ -35,6 +56,14 @@ open class APAnalyticsProviderFirebase: ZPAnalyticsProvider {
                 if  plistDictionary.allKeys.count > 0 {
                     if (FirebaseApp.app() == nil) {
                         FirebaseApp.configure()
+                        
+                        if let people = self.providerProperties[JsonKeys.people] as? String {
+                            self.isUserProfileEnabled = people.boolValue()
+                        }
+                        
+                        if let piiFilterOut = self.providerProperties[JsonKeys.piiFilterOut] as? String {
+                            self.isPiiFilteredOut = piiFilterOut.boolValue()
+                        }
                     }
                     return true
                 }
@@ -211,6 +240,51 @@ open class APAnalyticsProviderFirebase: ZPAnalyticsProvider {
             validateParameters[validateParamName] = validateParamValue
         }
         return validateParameters
+    }
+    
+    public func setUserProfileWithGenericUserProperties(genericUserProperties: [String : NSObject], piiUserProperties: [String : NSObject]) {
+        if isUserProfileEnabled {
+            var firebaseParameters = [String : NSObject]()
+            for (key, value) in genericUserProperties {
+                if key == kUserPropertiesCreatedKey {
+                    firebaseParameters[UserProfile.created] = value
+                }
+                else if key == kUserPropertiesiOSDevicesKey {
+                    firebaseParameters[UserProfile.iOSDevices] = value
+                }
+                else {
+                    firebaseParameters[key] = value
+                }
+            }
+            
+            if !self.isPiiFilteredOut {
+                for (key, value) in piiUserProperties {
+                    if key == kUserPropertiesEmailKey {
+                        firebaseParameters[UserProfile.email] = value
+                    }
+                    else if key == kUserPropertiesPhoneKey {
+                        firebaseParameters[UserProfile.phone] = value
+                    }
+                    else if key == kUserPropertiesFirstNameKey {
+                        firebaseParameters[UserProfile.firstName] = value
+                    }
+                    else if key == kUserPropertiesLastNameKey {
+                        firebaseParameters[UserProfile.lastName] = value
+                    }
+                    else if key == kUserPropertiesNameKey {
+                        firebaseParameters[UserProfile.name] = value
+                    }
+                    else if key == kUserPropertiesUserNameKey {
+                        firebaseParameters[UserProfile.userName] = value
+                    }
+                }
+            }
+            
+            if  !firebaseParameters.isEmpty {
+                NotificationCenter.default.post(name: Notification.Name(rawValue: "kLogFirebaseUserEvent"), object:firebaseParameters)
+
+            }
+        }
     }
 
 }
