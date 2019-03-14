@@ -1,49 +1,49 @@
 PODS:
-  - Firebase (5.10.0):
-    - Firebase/Core (= 5.10.0)
-  - Firebase/Core (5.10.0):
+  - Firebase (5.18.0):
+    - Firebase/Core (= 5.18.0)
+  - Firebase/Core (5.18.0):
     - Firebase/CoreOnly
-    - FirebaseAnalytics (= 5.2.0)
-  - Firebase/CoreOnly (5.10.0):
-    - FirebaseCore (= 5.1.5)
-  - FirebaseAnalytics (5.2.0):
-    - FirebaseCore (~> 5.1)
-    - FirebaseInstanceID (~> 3.2)
-    - GoogleAppMeasurement (~> 5.2)
+    - FirebaseAnalytics (= 5.7.0)
+  - Firebase/CoreOnly (5.18.0):
+    - FirebaseCore (= 5.3.1)
+  - FirebaseAnalytics (5.7.0):
+    - FirebaseCore (~> 5.3)
+    - FirebaseInstanceID (~> 3.6)
+    - GoogleAppMeasurement (= 5.7.0)
     - GoogleUtilities/AppDelegateSwizzler (~> 5.2)
     - GoogleUtilities/MethodSwizzler (~> 5.2)
     - GoogleUtilities/Network (~> 5.2)
     - "GoogleUtilities/NSData+zlib (~> 5.2)"
     - nanopb (~> 0.3)
-  - FirebaseCore (5.1.5):
+  - FirebaseCore (5.3.1):
     - GoogleUtilities/Logger (~> 5.2)
-  - FirebaseInstanceID (3.3.0):
-    - FirebaseCore (~> 5.1)
-    - GoogleUtilities/Environment (~> 5.3)
-    - GoogleUtilities/UserDefaults (~> 5.3)
-  - GoogleAppMeasurement (5.3.0):
+  - FirebaseInstanceID (3.7.0):
+    - FirebaseCore (~> 5.2)
+    - GoogleUtilities/Environment (~> 5.2)
+    - GoogleUtilities/UserDefaults (~> 5.2)
+  - GoogleAppMeasurement (5.7.0):
     - GoogleUtilities/AppDelegateSwizzler (~> 5.2)
     - GoogleUtilities/MethodSwizzler (~> 5.2)
     - GoogleUtilities/Network (~> 5.2)
     - "GoogleUtilities/NSData+zlib (~> 5.2)"
     - nanopb (~> 0.3)
-  - GoogleUtilities/AppDelegateSwizzler (5.3.4):
+  - GoogleUtilities/AppDelegateSwizzler (5.4.1):
     - GoogleUtilities/Environment
     - GoogleUtilities/Logger
     - GoogleUtilities/Network
-  - GoogleUtilities/Environment (5.3.4)
-  - GoogleUtilities/Logger (5.3.4):
+  - GoogleUtilities/Environment (5.4.1)
+  - GoogleUtilities/Logger (5.4.1):
     - GoogleUtilities/Environment
-  - GoogleUtilities/MethodSwizzler (5.3.4):
+  - GoogleUtilities/MethodSwizzler (5.4.1):
     - GoogleUtilities/Logger
-  - GoogleUtilities/Network (5.3.4):
+  - GoogleUtilities/Network (5.4.1):
     - GoogleUtilities/Logger
     - "GoogleUtilities/NSData+zlib"
     - GoogleUtilities/Reachability
-  - "GoogleUtilities/NSData+zlib (5.3.4)"
-  - GoogleUtilities/Reachability (5.3.4):
+  - "GoogleUtilities/NSData+zlib (5.4.1)"
+  - GoogleUtilities/Reachability (5.4.1):
     - GoogleUtilities/Logger
-  - GoogleUtilities/UserDefaults (5.3.4):
+  - GoogleUtilities/UserDefaults (5.4.1):
     - GoogleUtilities/Logger
   - nanopb (0.3.901):
     - nanopb/decode (= 0.3.901)
@@ -51,14 +51,14 @@ PODS:
   - nanopb/decode (0.3.901)
   - nanopb/encode (0.3.901)
   - Toaster (2.2.0.0)
-  - ZappAnalyticsPluginsSDK (6.0.0):
+  - ZappAnalyticsPluginsSDK (6.4.1):
     - Toaster
     - ZappPlugins
-  - ZappPlugins (7.1.5)
+  - ZappPlugins (7.4.1)
 
 DEPENDENCIES:
-  - Firebase (= 5.10.0)
-  - ZappAnalyticsPluginsSDK (~> 6.0.0)
+  - Firebase (= 5.18.0)
+  - ZappAnalyticsPluginsSDK (~> 6.4.0)
 
 SPEC REPOS:
   "git@github.com:applicaster/CocoaPods-Private.git":
@@ -76,17 +76,17 @@ SPEC REPOS:
     - nanopb
 
 SPEC CHECKSUMS:
-  Firebase: 6691d47562a780c26281ce8464518faafc90c610
-  FirebaseAnalytics: 831f1f127f4a75698e9875a87bf7e2668730d953
-  FirebaseCore: c6079de64c1a87000e52e9b408dddcadc901177f
-  FirebaseInstanceID: e2fa4cb35ef5558c200f7f0ad8a53e212215f93e
-  GoogleAppMeasurement: 5029d78f2b438bd30ffb44e6c558b57c21622727
-  GoogleUtilities: abb092d2c12e817fa3e0e7b274987dd72fb86ec3
+  Firebase: 02f3281965c075426141a0ce1277e9de6649cab9
+  FirebaseAnalytics: 23851fe602c872130a2c5c55040b302120346cc2
+  FirebaseCore: 52f851b30e11360f1e67cf04b1edfebf0a47a2d3
+  FirebaseInstanceID: bd6fc5a258884e206fd5c474ebe4f5b00e21770e
+  GoogleAppMeasurement: 6cf307834da065863f9faf4c0de0a936d81dd832
+  GoogleUtilities: 1e25823cbf46540b4284f6ef8e17b3a68ee12bbc
   nanopb: 2901f78ea1b7b4015c860c2fdd1ea2fee1a18d48
-  Toaster: c06c2bb68c93d6017780220d5d76dc6ffdd14688
-  ZappAnalyticsPluginsSDK: 1af2db8a8c2ef2cb15d3942f2ea8aefea97b2b3f
-  ZappPlugins: c7a0446ae13eebd47e6782d5d2a82b1ebdc0b3e5
+  Toaster: 7464b87db5bd9453043bd3cf0fc79219cc9803f1
+  ZappAnalyticsPluginsSDK: f4c83513ed98e811903b3f635da5e2b33a17bebf
+  ZappPlugins: 5ab74b8b878ed9756e1c0387664c89798cb8c308
 
-PODFILE CHECKSUM: c558ecfb58b26be3a9bbc106b85ba735738971a9
+PODFILE CHECKSUM: f2ed980640717c1853f1b35a47ed74100a2336b4
 
 COCOAPODS: 1.5.3
