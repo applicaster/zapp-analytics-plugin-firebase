@@ -23,6 +23,6 @@ Pod::Spec.new do |s|
               }
 
   s.dependency 'ZappAnalyticsPluginsSDK'
-  s.dependency 'Firebase', '= 5.11.0'
+  s.dependency 'Firebase'
   s.dependency 'Firebase/Analytics'
 end

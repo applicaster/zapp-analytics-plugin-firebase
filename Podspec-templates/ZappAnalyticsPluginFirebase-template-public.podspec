@@ -28,5 +28,5 @@ Pod::Spec.new do |s|
               }
 
   # addtional dependencies
-  s.dependency 'Firebase', '= 5.11.0'
+  s.dependency 'Firebase', '= 5.18.0'
 end
