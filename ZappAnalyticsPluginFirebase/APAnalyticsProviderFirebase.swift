@@ -14,7 +14,7 @@ import Firebase
 import ZappAnalyticsPluginsSDK
 
 open class APAnalyticsProviderFirebase: ZPAnalyticsProvider {
-    
+        
     public let MAX_PARAM_NAME_CHARACTERS_LONG  :Int = 40
     public let MAX_PARAM_VALUE_CHARACTERS_LONG :Int = 100
     public let FIREBASE_PREFIX : String = "Firebase_"
@@ -79,18 +79,11 @@ open class APAnalyticsProviderFirebase: ZPAnalyticsProvider {
         let eventName = refactorParamName(eventName: eventName)
 
         if combinedParameters.isEmpty == true {
-            //The following line should be replaced with the second one when firebase SDK will be fixed
-             NotificationCenter.default.post(name: Notification.Name(rawValue: "kLogFirebaseEvent"), object:["event name" : eventName])
-            //FIRAnalytics.logEvent(withName : eventName, parameters: nil)
+            Analytics.logEvent(eventName, parameters: nil)
         }
         else{
             combinedParameters = refactorEventParameters(parameters: combinedParameters)
-            
-            //The next two lines should be replaced with the third one when firebase SDK will be fixed
-            
-            combinedParameters["event name"] = eventName as NSObject;
-            NotificationCenter.default.post(name: Notification.Name(rawValue: "kLogFirebaseEvent"), object:combinedParameters)
-            //FIRAnalytics.logEvent(withName: eventName, parameters:combinedParameters)
+            Analytics.logEvent(eventName, parameters:combinedParameters)
         }
     }
 
@@ -121,6 +114,10 @@ open class APAnalyticsProviderFirebase: ZPAnalyticsProvider {
     
     override open func trackEvent(_ eventName:String){
         trackEvent(eventName, parameters: [String : NSObject]())
+    }
+    
+    override open func trackScreenView(_ screenName: String, parameters: [String : NSObject]) {
+        Analytics.setScreenName(screenName, screenClass: nil)
     }
     
     override open func endTimedEvent(_ eventName: String, parameters: [String : NSObject]) {
@@ -280,9 +277,11 @@ open class APAnalyticsProviderFirebase: ZPAnalyticsProvider {
                 }
             }
             
-            if  !firebaseParameters.isEmpty {
-                NotificationCenter.default.post(name: Notification.Name(rawValue: "kLogFirebaseUserEvent"), object:firebaseParameters)
-
+            for (key, value) in firebaseParameters {
+                guard let value = value as? String else {
+                    continue
+                }
+                Analytics.setUserProperty(value, forName: key)
             }
         }
     }
