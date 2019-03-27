@@ -23,25 +23,17 @@ open class APAnalyticsProviderFirebase: ZPAnalyticsProvider {
     private var LEGENT_JSON : String = "{\" \":\"__\",\"_\":\"_0\",\"-\":\"_1\",\":\":\"_2\",\"'\":\"_3\",\".\":\"_4\",\",\":\"_5\",\"/\":\"_6\",\"\\\\\":\"_7\",\"(\":\"_8\",\")\":\"_A\",\"?\":\"_B\",\"\\\"\":\"_C\",\"!\":\"_D\",\"@\":\"_E\",\"#\":\"_F\",\"$\":\"_G\",\"%\":\"_H\",\"^\":\"_I\",\"&\":\"_J\",\"*\":\"_K\",\"=\":\"_M\",\"+\":\"_N\",\"~\":\"_L\",\"`\":\"_O\",\"|\":\"_P\",\";\":\"_Q\",\"[\":\"_R\",\"]\":\"_S\",\"}\":\"_T\",\"{\":\"_U\"}"
     
     
-    var isUserProfileEnabled = false
-    var isPiiFilteredOut = false
+    var isUserProfileEnabled = true
     
     //Firebase User Profile
     struct UserProfile {
         static let created = "$created"
-        static let email = "$email"
-        static let phone = "$phone"
-        static let firstName = "$first_name"
-        static let lastName = "$last_name"
-        static let name = "$name"
-        static let userName = "$username"
         static let iOSDevices = "$ios_devices"
     }
     
     //Json Keys
     struct JsonKeys {
-        static let people = "people"
-        static let piiFilterOut = "filter_out_pii"
+        static let sendUserData = "Send_User_Data"
     }
     
     override open func getKey() -> String {
@@ -57,18 +49,16 @@ open class APAnalyticsProviderFirebase: ZPAnalyticsProvider {
                     if (FirebaseApp.app() == nil) {
                         FirebaseApp.configure()
                         
-                        if let people = self.providerProperties[JsonKeys.people] as? String {
+                        if let people = self.providerProperties[JsonKeys.sendUserData] as? String {
                             self.isUserProfileEnabled = people.boolValue()
                         }
-                        
-                        if let piiFilterOut = self.providerProperties[JsonKeys.piiFilterOut] as? String {
-                            self.isPiiFilteredOut = piiFilterOut.boolValue()
-                        }
                     }
+                    
                     return true
                 }
             }
         }
+        
         return false
     }
     
@@ -122,6 +112,30 @@ open class APAnalyticsProviderFirebase: ZPAnalyticsProvider {
     
     override open func endTimedEvent(_ eventName: String, parameters: [String : NSObject]) {
         processEndTimedEvent(eventName, parameters: parameters)
+    }
+    
+    override open func setUserProfile(genericUserProperties dictGenericUserProperties: [String : NSObject],
+                                      piiUserProperties dictPiiUserProperties: [String : NSObject]) {
+        if isUserProfileEnabled {
+            var firebaseParameters = [String : NSObject]()
+            for (key, value) in dictGenericUserProperties {
+                switch key {
+                case kUserPropertiesCreatedKey:
+                    firebaseParameters[UserProfile.created] = value
+                case kUserPropertiesiOSDevicesKey:
+                    firebaseParameters[UserProfile.iOSDevices] = value
+                default:
+                    firebaseParameters[key] = value
+                }
+            }
+            
+            for (key, value) in firebaseParameters {
+                guard let value = value as? String else {
+                    continue
+                }
+                Analytics.setUserProperty(value, forName: key)
+            }
+        }
     }
     
     /*
@@ -222,7 +236,6 @@ open class APAnalyticsProviderFirebase: ZPAnalyticsProvider {
         return ""
     }
     
-    
     /*
      * Validate and refactor parameters before sending event
      */
@@ -239,51 +252,8 @@ open class APAnalyticsProviderFirebase: ZPAnalyticsProvider {
         return validateParameters
     }
     
-    public func setUserProfileWithGenericUserProperties(genericUserProperties: [String : NSObject], piiUserProperties: [String : NSObject]) {
-        if isUserProfileEnabled {
-            var firebaseParameters = [String : NSObject]()
-            for (key, value) in genericUserProperties {
-                if key == kUserPropertiesCreatedKey {
-                    firebaseParameters[UserProfile.created] = value
-                }
-                else if key == kUserPropertiesiOSDevicesKey {
-                    firebaseParameters[UserProfile.iOSDevices] = value
-                }
-                else {
-                    firebaseParameters[key] = value
-                }
-            }
-            
-            if !self.isPiiFilteredOut {
-                for (key, value) in piiUserProperties {
-                    if key == kUserPropertiesEmailKey {
-                        firebaseParameters[UserProfile.email] = value
-                    }
-                    else if key == kUserPropertiesPhoneKey {
-                        firebaseParameters[UserProfile.phone] = value
-                    }
-                    else if key == kUserPropertiesFirstNameKey {
-                        firebaseParameters[UserProfile.firstName] = value
-                    }
-                    else if key == kUserPropertiesLastNameKey {
-                        firebaseParameters[UserProfile.lastName] = value
-                    }
-                    else if key == kUserPropertiesNameKey {
-                        firebaseParameters[UserProfile.name] = value
-                    }
-                    else if key == kUserPropertiesUserNameKey {
-                        firebaseParameters[UserProfile.userName] = value
-                    }
-                }
-            }
-            
-            for (key, value) in firebaseParameters {
-                guard let value = value as? String else {
-                    continue
-                }
-                Analytics.setUserProperty(value, forName: key)
-            }
-        }
+    public func setUserProfileWithGenericUserProperties(genericUserProperties: [String : NSObject],
+                                                        piiUserProperties: [String : NSObject]) {
+        
     }
-
 }
