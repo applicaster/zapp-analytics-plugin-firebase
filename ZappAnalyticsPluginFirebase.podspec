@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = "ZappAnalyticsPluginFirebase"
-  s.version = '6.1.2'
+  s.version = '6.1.3'
   s.summary          = "ZappAnalyticsPluginFirebase"
   s.description      = <<-DESC
                         ZappAnalyticsPluginFirebase container.
@@ -10,7 +10,7 @@ Pod::Spec.new do |s|
   s.author           = { "cmps" => "a.zchut@applicaster.com" }
   s.source           = { :git => "git@github.com:applicaster/ZappAnalyticsPlugins-iOS.git", :tag => s.version.to_s }
 
-  s.platform     = :ios, '9.0'
+  s.platform     = :ios, '10.0'
   s.requires_arc = true
   s.static_framework = true
 
