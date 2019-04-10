@@ -252,7 +252,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-ZappAnalyticsPluginFirebase-ZappAnalyticsPluginFirebaseTests/Pods-ZappAnalyticsPluginFirebase-ZappAnalyticsPluginFirebaseTests-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-ZappAnalyticsPluginFirebase-ZappAnalyticsPluginFirebaseTests/Pods-ZappAnalyticsPluginFirebase-ZappAnalyticsPluginFirebaseTests-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
 				"${BUILT_PRODUCTS_DIR}/Toaster/Toaster.framework",
 				"${BUILT_PRODUCTS_DIR}/ZappAnalyticsPluginsSDK/ZappAnalyticsPluginsSDK.framework",
@@ -269,7 +269,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ZappAnalyticsPluginFirebase-ZappAnalyticsPluginFirebaseTests/Pods-ZappAnalyticsPluginFirebase-ZappAnalyticsPluginFirebaseTests-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ZappAnalyticsPluginFirebase-ZappAnalyticsPluginFirebaseTests/Pods-ZappAnalyticsPluginFirebase-ZappAnalyticsPluginFirebaseTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		90F2B23593BCC0986E287B7C /* [CP] Check Pods Manifest.lock */ = {
