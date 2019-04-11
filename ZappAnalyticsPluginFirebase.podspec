@@ -21,7 +21,7 @@ Pod::Spec.new do |s|
                           'FRAMEWORK_SEARCH_PATHS' => '$(inherited) "${PODS_ROOT}"/Firebase/**',
                           'OTHER_LDFLAGS' => '$(inherited) -objc -framework "FirebaseCore" -framework "FirebaseInstanceID" -framework "FirebaseAnalytics"',
                           'ENABLE_BITCODE' => 'YES',
-                          'SWIFT_VERSION' => '4.1',
+                          'SWIFT_VERSION' => '4.2',
                           'USER_HEADER_SEARCH_PATHS' => '"$(inherited)" "${PODS_ROOT}"/Firebase/**'
               }
 
