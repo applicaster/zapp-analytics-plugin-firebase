@@ -106,10 +106,6 @@ open class APAnalyticsProviderFirebase: ZPAnalyticsProvider {
         trackEvent(eventName, parameters: [String : NSObject]())
     }
     
-    override open func trackScreenView(_ screenName: String, parameters: [String : NSObject]) {
-        Analytics.setScreenName(screenName, screenClass: nil)
-    }
-    
     override open func endTimedEvent(_ eventName: String, parameters: [String : NSObject]) {
         processEndTimedEvent(eventName, parameters: parameters)
     }
