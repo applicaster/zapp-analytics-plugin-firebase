@@ -11,7 +11,7 @@
   "author_email": "r.karpievich@applicaster.com",
   "manifest_version": "7.1.0",
   "name": "Google Analytics for Firebase",
-  "description": "Google's free, deep, and broadly integrated analytics system designed specifically for mobile.",
+  "description": "Google’s free, robust, and deeply-integrated analytics tool for mobile apps.",
   "identifier": "firebase_ios",
   "type": "analytics",
   "platform": "ios",
