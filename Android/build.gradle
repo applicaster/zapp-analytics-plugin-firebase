@@ -124,8 +124,8 @@ publishing {
             def versionFromTag = getVersionName()
             if (versionFromTag != null) {
                 // Check if version from tag equals to version from properties
-//                if (!compareVersions(versionFromTag, VERSION))
-//                    throw new Exception("Incomparable version value from tag and properties!")
+                if (!compareVersions(versionFromTag, VERSION))
+                    throw new Exception("Incomparable version value from tag and properties!")
 
                 // There is a tag existing on the current commit - we can upload to Bintray
                 version versionFromTag
