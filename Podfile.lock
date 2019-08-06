@@ -50,21 +50,18 @@ PODS:
     - nanopb/encode (= 0.3.901)
   - nanopb/decode (0.3.901)
   - nanopb/encode (0.3.901)
-  - Toaster (2.2.0.0)
-  - ZappAnalyticsPluginsSDK (7.0.0):
-    - Toaster
+  - ZappAnalyticsPluginsSDK (8.0.4):
     - ZappPlugins
-  - ZappPlugins (8.3.2)
+  - ZappPlugins (9.1.8)
 
 DEPENDENCIES:
   - Firebase (= 5.18.0)
-  - ZappAnalyticsPluginsSDK (~> 7.0.0)
+  - ZappAnalyticsPluginsSDK
 
 SPEC REPOS:
   "git@github.com:applicaster/CocoaPods-Private.git":
     - ZappAnalyticsPluginsSDK
   "git@github.com:applicaster/CocoaPods.git":
-    - Toaster
     - ZappPlugins
   https://github.com/cocoapods/specs.git:
     - Firebase
@@ -83,10 +80,9 @@ SPEC CHECKSUMS:
   GoogleAppMeasurement: 6cf307834da065863f9faf4c0de0a936d81dd832
   GoogleUtilities: 04fce34bcd5620c1ee76fb79172105c74a4df335
   nanopb: 2901f78ea1b7b4015c860c2fdd1ea2fee1a18d48
-  Toaster: 7464b87db5bd9453043bd3cf0fc79219cc9803f1
-  ZappAnalyticsPluginsSDK: d298f6c0d8624e3eb6cd372eca56ca78143d722e
-  ZappPlugins: bd5c96f2b4b0977a97254d45c9a39eb1982d893a
+  ZappAnalyticsPluginsSDK: 6f8edcddc12ae4001098a3fa6fe87e6fe1a013bd
+  ZappPlugins: 19d19d6fe70d39a4fc5a323e6a9146e0ab629970
 
-PODFILE CHECKSUM: 74b27db7c16372a7e50323cdf17432688bab4d14
+PODFILE CHECKSUM: 130385b66bdd301059bc50db706a6466f4d16fbf
 
-COCOAPODS: 1.7.1
+COCOAPODS: 1.7.4
