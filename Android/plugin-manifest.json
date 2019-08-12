@@ -4,6 +4,9 @@
     "proguard_rules": "-keep public class applicaster.analytics.firebase.FirebaseAgent{public \u003cfields\u003e;public \u003cmethods\u003e;} -keep public class com.akamai.** {public \u003cfields\u003e; public \u003cmethods\u003e;}",
     "require_startup_execution": false
   },
+  "dependency_repository_url": [{
+    "url": "https://dl.bintray.com/applicaster-ltd/maven_plugins/"
+  }],
   "name": "Google Analytics for Firebase",
   "type": "analytics",
   "platform": "android",
@@ -17,7 +20,6 @@
   "dependency_name": "com.applicaster:FirebaseAnalyticsPlugin",
   "manifest_version": "2.3.0",
   "dependency_version": "2.3.0",
-  "dependency_repository_url": [],
   "cover_image": "https://res.cloudinary.com/dtiodujtz/image/upload/v1553522185/Plugins/GAforFirebase.jpg",
   "whitelisted_account_ids": [],
   "custom_configuration_fields": [
