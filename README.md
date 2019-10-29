@@ -28,11 +28,11 @@ Before you begin, you need to register your app on the [Firebase Console]([https
 
 * Clone the project from github, cd to the iOS folder
 
-* Run `pod update`
+* Run `pod install`
 
-* TBD
+* Open ZappAnalyticsPluginFirebase.xcworkspace.
 
-* The plugin classes will be found under `Pods`, in the `Development Pods` folder. 
+* The plugin classes will be found under `ZappAnalyticsPluginFirebase` project, in the `ZappAnalyticsPluginFirebase` folder. 
 
 
 ## Related Links
