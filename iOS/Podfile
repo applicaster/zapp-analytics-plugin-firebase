@@ -1,6 +1,6 @@
 # Uncomment the next line to define a global platform for your project
 platform :ios, '10.0'
-source 'git@github.com:CocoaPods/Specs.git'
+source 'https://cdn.cocoapods.org/'
 source 'git@github.com:applicaster/CocoaPods.git'
 source 'git@github.com:applicaster/CocoaPods-Private.git'
 
