@@ -8,20 +8,20 @@ jobs:
 
     # Specify the Xcode version to use
     macos:
-      xcode: "10.1.0"
+      xcode: "11.2.1"
     shell: /bin/bash --login -eo pipefail
     environment:
       - PROJECT_NAME: "ZappAnalyticsPluginFirebase"
       - SCRIPTS_LOCAL_FOLDER: "~/.scripts-iOS"
       - SCRIPTS_REPO_PATH: "git@github.com:applicaster/Scripts-iOS.git"
-      - DEPLOY_VERSION: "0.5.0"
+      - DEPLOY_VERSION: "0.10.0"
       - DEPLOY_COMMAND: "~/.scripts-iOS/circleCi/deploySinglePlugin.sh"
     working_directory: ~/ZappAnalyticsPluginFirebase-iOS
 
     steps:
       - run:
           name: Ruby - set version
-          command:  echo "ruby-2.4" > ~/.ruby-version
+          command:  echo "ruby-2.5" > ~/.ruby-version
 
       - run:
           name: Ruby - version
@@ -30,17 +30,17 @@ jobs:
       # Prepere Git and Submodules
       - restore_cache:
           name: Git - restore cache
-          key: Zapp-ZappAnalyticsPluginFirebase-v1-{{ .Branch }}-{{ .Revision }}-{{ .Environment.version_id }}
+          key: Zapp-ZappAnalyticsPluginFirebase-v2-{{ .Branch }}-{{ .Revision }}-{{ .Environment.version_id }}
           keys:
-            - Zapp-ZappAnalyticsPluginFirebase-v1-{{ .Branch }}-{{ .Revision }}
-            - Zapp-ZappAnalyticsPluginFirebase-v1-{{ .Branch }}-
-            - Zapp-ZappAnalyticsPluginFirebase-v1-
+            - Zapp-ZappAnalyticsPluginFirebase-v2-{{ .Branch }}-{{ .Revision }}
+            - Zapp-ZappAnalyticsPluginFirebase-v2-{{ .Branch }}-
+            - Zapp-ZappAnalyticsPluginFirebase-v2-
 
       - checkout
 
       - save_cache:
           name: Git - save cache
-          key: Zapp-AnalyticsPlugins-v1-{{ .Branch }}-{{ .Revision }}-{{ .Environment.version_id }}
+          key: Zapp-AnalyticsPlugins-v2-{{ .Branch }}-{{ .Revision }}-{{ .Environment.version_id }}
           paths:
             - ".git"
 
@@ -61,7 +61,7 @@ jobs:
       # Prepare Bundler
       - restore_cache:
           name: Bundler - restore cache
-          key: Zapp-ZappAnalyticsPluginFirebase-v1-{{ checksum "Gemfile.lock" }}
+          key: Zapp-ZappAnalyticsPluginFirebase-v2-{{ checksum "Gemfile.lock" }}
 
       - run:
           name: Bundler - update dependencies
@@ -69,7 +69,7 @@ jobs:
 
       - save_cache:
           name: Bundler - save cache
-          key: Zapp-ZappAnalyticsPluginFirebase-v1-{{ checksum "Gemfile.lock" }}
+          key: Zapp-ZappAnalyticsPluginFirebase-v2-{{ checksum "Gemfile.lock" }}
           paths:
             - /Users/distiller/.rubies/ruby-2.4.2/lib/ruby/gems/2.4.0/gems
 
