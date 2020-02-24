@@ -184,12 +184,14 @@ open class APAnalyticsProviderFirebase: ZPAnalyticsProvider {
         }
         
         // 3. must start with an alphabetic chaacter.
-        switch returnValue[returnValue.startIndex] {
-        case "0"..."9" , "a"..."z", "A"..."Z":
-            break
-        default:
-            returnValue = APPLICASTER_PREFIX + returnValue;
-            break
+        if returnValue.isEmpty == false {
+            switch returnValue[returnValue.startIndex] {
+            case "0"..."9" , "a"..."z", "A"..."Z":
+                break
+            default:
+                returnValue = APPLICASTER_PREFIX + returnValue;
+                break
+            }
         }
         
         //Param names can be up to 40 characters long.
