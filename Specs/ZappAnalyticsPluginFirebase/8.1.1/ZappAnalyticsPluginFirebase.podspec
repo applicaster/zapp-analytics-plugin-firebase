@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name  = "ZappAnalyticsPluginFirebase"
-  s.version = '8.1.0'
+  s.version = '8.1.1'
   s.platform  = :ios, '10.0'
   s.summary = "ZappAnalyticsPluginFirebase"
   s.description = "ZappAnalyticsPluginFirebase container."
