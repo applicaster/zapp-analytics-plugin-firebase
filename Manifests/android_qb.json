@@ -32,6 +32,7 @@
         "default": 1,
         "tooltip_text": "Sends any user data collected in the app. Per Google&apos;s policies, we will not send any user data identified as PII (Personally Identifiable Information)."
       }
-    ]
+    ],
+    "targets": ["mobile"]
   }
   

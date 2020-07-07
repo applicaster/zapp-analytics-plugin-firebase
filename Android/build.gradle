@@ -8,7 +8,7 @@ android {
         minSdkVersion 19
         targetSdkVersion 28
 
-        versionCode 3
+        versionCode 4
         versionName "3.0.1"
 
         consumerProguardFiles 'proguard-rules.pro'
