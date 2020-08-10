@@ -17,6 +17,7 @@ Pod::Spec.new do |s|
 
   # base dependency
   s.dependency 'ZappAnalyticsPluginsSDK'
+  s.dependency 'ZappPlugins'
 
   # config
   s.xcconfig =  { 'CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES' => 'YES',
