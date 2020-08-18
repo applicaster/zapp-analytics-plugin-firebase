@@ -12,7 +12,7 @@
     "platform": "android_for_quickbrick",
     "identifier": "firebase_android",
     "author_name": "Alex Khomich",
-    "description": "Google’s free, robust, and deeply-integrated analytics tool for mobile apps.",
+    "description": "Google’s free, robust, and deeply-integrated analytics tool for mobile apps.\nPlease do not populate the user id field unless your app is legally authorised (for further information, please reach support)",
     "author_email": "a.khomich@applicaster.com",
     "min_zapp_sdk": "0.1.0-alpha1",
     "deprecated_since_zapp_sdk": "",
@@ -20,8 +20,8 @@
     "react_native": false,
     "ui_builder_support": true,
     "dependency_name": "com.applicaster:FirebaseAnalyticsPlugin",
-    "manifest_version": "3.0.1",
-    "dependency_version": "3.0.1",
+    "manifest_version": "3.1.0",
+    "dependency_version": "3.1.0",
     "cover_image": "https://res.cloudinary.com/dtiodujtz/image/upload/v1553522185/Plugins/GAforFirebase.jpg",
     "whitelisted_account_ids": [],
     "custom_configuration_fields": [
@@ -31,6 +31,12 @@
         "key": "Send_User_Data",
         "default": 1,
         "tooltip_text": "Sends any user data collected in the app. Per Google&apos;s policies, we will not send any user data identified as PII (Personally Identifiable Information)."
+      },
+      {
+        "type": "text",
+        "label": "User Id",
+        "key": "user_id",
+        "tooltip_text": "Please do not populate the user id field unless your app is legally authorised (for further information, please reach support)."
       }
     ],
     "targets": ["mobile"]

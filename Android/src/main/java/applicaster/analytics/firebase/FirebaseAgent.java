@@ -5,8 +5,12 @@ import android.os.Bundle;
 import android.os.SystemClock;
 
 import com.applicaster.analytics.BaseAnalyticsAgent;
+import com.applicaster.app.APProperties;
+import com.applicaster.storage.LocalStorage;
+import com.applicaster.storage.StorageRepository;
 import com.applicaster.util.APLogger;
 import com.applicaster.util.AnalyticsStorage.AnalyticsStorage;
+import com.applicaster.util.AppData;
 import com.applicaster.util.OSUtil;
 import com.applicaster.util.StringUtil;
 import com.google.firebase.analytics.FirebaseAnalytics;
@@ -35,6 +39,7 @@ public class FirebaseAgent extends BaseAnalyticsAgent {
     public static final String GOOGLE_PREFIX = "google_";
     public static final String GA_PREFIX = "ga_";
     public static final String SEND_USER_DATA = "Send_User_Data";
+    public static final String USER_ID = "user_id";
     private static final String TAG = FirebaseAgent.class.getSimpleName();
     private Map<Character,String> legend;
 
@@ -42,6 +47,7 @@ public class FirebaseAgent extends BaseAnalyticsAgent {
 
     private Map<String,Long> timedEventMap;
     private boolean isSendUserData = false;
+    private String userId;
 
     @Override
     public void setParams(Map params) {
@@ -51,6 +57,9 @@ public class FirebaseAgent extends BaseAnalyticsAgent {
 
         if (params.containsKey(SEND_USER_DATA))
             isSendUserData = "1".equals(params.get(SEND_USER_DATA));
+
+        if (params.containsKey(USER_ID))
+            userId = params.get(USER_ID).toString();
     }
 
     @Override
@@ -254,6 +263,13 @@ public class FirebaseAgent extends BaseAnalyticsAgent {
         super.sendUserProperties(params);
         if (params != null && isSendUserData) {
 
+            if (allowTrackingUserId()) {
+                String storedUserId = getLocalStorageUserId();
+                if (StringUtil.isNotEmpty(storedUserId)) {
+                    params.put("user_id", storedUserId);
+                }
+            }
+
             // Check if current params include data that should not be sent and remove it
             // Per Google's policy, it is prohibited to send PII data at all
             // and we should remove all PII properties from params
@@ -269,5 +285,22 @@ public class FirebaseAgent extends BaseAnalyticsAgent {
                 mFirebaseAnalytics.setUserProperty(key, params.getString(key));
             }
         }
+    }
+
+    private boolean allowTrackingUserId() {
+        String appFamilyId = AppData.getProperty(APProperties.ZAPP_APP_FAMILY_ID);
+
+        if (StringUtil.isNotEmpty(userId)) {
+            return ("allow-tracking-user-id-for-app-family-" + appFamilyId).compareTo(userId) == 0;
+        }
+        return false;
+    }
+
+    private String getLocalStorageUserId() {
+        StorageRepository storageRepository = LocalStorage.INSTANCE.getStorageRepository();
+        if (storageRepository != null) {
+            return storageRepository.get("user_id", "login");
+        }
+        return "";
     }
 }
