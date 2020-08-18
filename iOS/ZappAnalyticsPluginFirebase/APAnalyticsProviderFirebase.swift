@@ -142,13 +142,20 @@ open class APAnalyticsProviderFirebase: ZPAnalyticsProvider {
                 Analytics.setUserProperty(value, forName: key)
             }
             
-            //We want to add the user id only if it is configured as allow-tracking-user-id-for-app-family-<APP_FAMILY_ID> in the plugin configurations
-            if let userIDParameter = configurationJSON?[UserIDConstants.userIDJSONConfig] as? String,
-                let familyID = ZAAppConnector.sharedInstance().storageDelegate?.localStorageValue(for:UserIDConstants.familyIDLocalStorageKey, namespace:nil),
-                userIDParameter == "\(UserIDConstants.userIDCompareString)\(familyID)" {
-                let userID = ZAAppConnector.sharedInstance().storageDelegate?.localStorageValue(for:UserIDConstants.userIDLocalStorageKey, namespace:UserIDConstants.loginNamespace)
-                Analytics.setUserID(userID)
-            }
+            checkUserID()
+        }
+    }
+
+    //Method that add the user id only if it is configured as allow-tracking-user-id-for-app-family-<APP_FAMILY_ID> in the plugin configurations
+    fileprivate func checkUserID() {
+        guard let userIDParameter = configurationJSON?[UserIDConstants.userIDJSONConfig] as? String,
+            let familyID = ZAAppConnector.sharedInstance().storageDelegate?.localStorageValue(for:UserIDConstants.familyIDLocalStorageKey, namespace:nil),
+            let userID = ZAAppConnector.sharedInstance().storageDelegate?.localStorageValue(for:UserIDConstants.userIDLocalStorageKey, namespace:UserIDConstants.loginNamespace) else {
+                return
+        }
+
+        if (userIDParameter == "\(UserIDConstants.userIDCompareString)\(familyID)") {
+            Analytics.setUserID(userID)
         }
     }
     
