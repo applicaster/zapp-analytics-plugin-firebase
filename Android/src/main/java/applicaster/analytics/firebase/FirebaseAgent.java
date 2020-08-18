@@ -266,7 +266,7 @@ public class FirebaseAgent extends BaseAnalyticsAgent {
             if (allowTrackingUserId()) {
                 String storedUserId = getLocalStorageUserId();
                 if (StringUtil.isNotEmpty(storedUserId)) {
-                    params.put("user_id", storedUserId);
+                    mFirebaseAnalytics.setUserId(storedUserId);
                 }
             }
 
