@@ -11,6 +11,7 @@ target 'ZappAnalyticsPluginFirebase' do
   # Pods for ZappAnalyticsPluginChartbeat
   pod 'ZappAnalyticsPluginsSDK'
   pod 'Firebase', '= 5.18.0'
+  pod 'ZappPlugins'
 
   target 'ZappAnalyticsPluginFirebaseTests' do
     # Pods for testing

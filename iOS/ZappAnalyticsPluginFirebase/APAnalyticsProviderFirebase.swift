@@ -12,6 +12,7 @@
 
 import Firebase
 import ZappAnalyticsPluginsSDK
+import ZappPlugins
 
 open class APAnalyticsProviderFirebase: ZPAnalyticsProvider {
         
@@ -34,6 +35,15 @@ open class APAnalyticsProviderFirebase: ZPAnalyticsProvider {
     //Json Keys
     struct JsonKeys {
         static let sendUserData = "Send_User_Data"
+    }
+    
+    //Constants used for User ID tracking functionality
+    struct UserIDConstants {
+        static let userIDJSONConfig = "user_id"
+        static let familyIDLocalStorageKey = "app_family_id"
+        static let userIDCompareString = "allow-tracking-user-id-for-app-family-"
+        static let userIDLocalStorageKey = "user_id"
+        static let loginNamespace = "login"
     }
     
     override open func getKey() -> String {
@@ -131,6 +141,21 @@ open class APAnalyticsProviderFirebase: ZPAnalyticsProvider {
                 }
                 Analytics.setUserProperty(value, forName: key)
             }
+            
+            checkUserID()
+        }
+    }
+
+    //Method that add the user id only if it is configured as allow-tracking-user-id-for-app-family-<APP_FAMILY_ID> in the plugin configurations
+    fileprivate func checkUserID() {
+        guard let userIDParameter = configurationJSON?[UserIDConstants.userIDJSONConfig] as? String,
+            let familyID = ZAAppConnector.sharedInstance().storageDelegate?.localStorageValue(for:UserIDConstants.familyIDLocalStorageKey, namespace:nil),
+            let userID = ZAAppConnector.sharedInstance().storageDelegate?.localStorageValue(for:UserIDConstants.userIDLocalStorageKey, namespace:UserIDConstants.loginNamespace) else {
+                return
+        }
+
+        if (userIDParameter == "\(UserIDConstants.userIDCompareString)\(familyID)") {
+            Analytics.setUserID(userID)
         }
     }
     
