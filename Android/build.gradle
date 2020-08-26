@@ -56,7 +56,9 @@ dependencies {
     if (devSDK != null) {
         implementation project(':applicaster-android-sdk')
     } else {
-        api 'com.applicaster:applicaster-android-sdk-core:6.1.0'
+        api ('com.applicaster:applicaster-android-sdk:6.1.0') {
+            exclude group:    'com.applicaster', module: 'react-native'
+        }
 
         testImplementation 'junit:junit:4.12'
         testImplementation 'org.mockito:mockito-core:1.10.19'
