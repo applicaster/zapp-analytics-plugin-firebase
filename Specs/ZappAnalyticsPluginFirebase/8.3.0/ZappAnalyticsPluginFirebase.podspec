@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 Pod::Spec.new do |s|
   s.name = 'ZappAnalyticsPluginFirebase'
   s.version = '8.3.0'
