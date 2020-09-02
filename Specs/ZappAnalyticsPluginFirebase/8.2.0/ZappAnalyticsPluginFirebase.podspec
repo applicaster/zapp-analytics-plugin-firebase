@@ -27,4 +27,5 @@ Pod::Spec.new do |s|
   s.dependency 'Firebase/Analytics'
   s.dependency 'FirebaseInstanceID'
   s.dependency 'ZappPlugins'
+  s.dependency 'GoogleUtilities', '~> 5.3.7'
 end
