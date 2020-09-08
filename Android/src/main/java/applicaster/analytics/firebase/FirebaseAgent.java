@@ -47,6 +47,7 @@ public class FirebaseAgent extends BaseAnalyticsAgent {
     public static final String USER_ID = "user_id";
     public static final String SEND_BROADCAST_ACTION = "send_broadcast_from_rn";
     public static final String EVENT_PROPERTIES = "event_properties";
+    public static final String EVENT_NAME = "event_name";
     private static final String TAG = FirebaseAgent.class.getSimpleName();
     private Map<Character,String> legend;
 
@@ -81,7 +82,9 @@ public class FirebaseAgent extends BaseAnalyticsAgent {
             @Override
             public void onReceive(Context context, Intent intent) {
                 try {
-                    sendUserProperties(new JSONObject(intent.getStringExtra(EVENT_PROPERTIES)));
+                    if ("userProperties".equals(intent.getStringExtra(EVENT_NAME))) {
+                        sendUserProperties(new JSONObject(intent.getStringExtra(EVENT_PROPERTIES)));
+                    }
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
