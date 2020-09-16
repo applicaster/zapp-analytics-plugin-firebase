@@ -9,8 +9,8 @@
   "dependency_repository_url": [
     "git@github.com:applicaster/zapp-analytics-plugin-firebase.git"
   ],
-  "author_name": "Pablo Rueda",
-  "author_email": "p.rueda@applicaster.com",
+  "author_name": "Avi Levin",
+  "author_email": "a.levin@applicaster.com",
   "manifest_version": "8.2.1",
   "name": "Google Analytics for Firebase",
   "description": "Google's free, deep, and broadly integrated analytics system designed specifically for mobile. Please do not populate the user id field unless your app is legally authorised (for further information, please reach support).",
