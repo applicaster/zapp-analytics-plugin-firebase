@@ -22,7 +22,7 @@ open class APAnalyticsProviderFirebase: ZPAnalyticsProvider {
     public let APPLICASTER_PREFIX : String = "applicaster_"
     private var LEGENT : Dictionary<String, String> = [:]
     private var LEGENT_JSON : String = "{\" \":\"__\",\"_\":\"_0\",\"-\":\"_1\",\":\":\"_2\",\"'\":\"_3\",\".\":\"_4\",\",\":\"_5\",\"/\":\"_6\",\"\\\\\":\"_7\",\"(\":\"_8\",\")\":\"_A\",\"?\":\"_B\",\"\\\"\":\"_C\",\"!\":\"_D\",\"@\":\"_E\",\"#\":\"_F\",\"$\":\"_G\",\"%\":\"_H\",\"^\":\"_I\",\"&\":\"_J\",\"*\":\"_K\",\"=\":\"_M\",\"+\":\"_N\",\"~\":\"_L\",\"`\":\"_O\",\"|\":\"_P\",\";\":\"_Q\",\"[\":\"_R\",\"]\":\"_S\",\"}\":\"_T\",\"{\":\"_U\"}"
-    
+    private let USER_PROPERTIES_EVENT_NAME = Notification.Name("userProperties")
     
     var isUserProfileEnabled = true
     
@@ -50,6 +50,12 @@ open class APAnalyticsProviderFirebase: ZPAnalyticsProvider {
         return "firebase"
     }
     
+    deinit {
+        NotificationCenter.default.removeObserver(self,
+                                                  name: USER_PROPERTIES_EVENT_NAME,
+                                                  object: nil)
+    }
+    
     override open func configureProvider() -> Bool {
         initLegent()
         if let path = Bundle.main.path(forResource: "GoogleService-Info",
@@ -63,6 +69,12 @@ open class APAnalyticsProviderFirebase: ZPAnalyticsProvider {
                             self.isUserProfileEnabled = people.boolValue()
                         }
                     }
+                    
+                    //Listen to react native broadcase events
+                    NotificationCenter.default.addObserver(self,
+                                                           selector: #selector(onDidReceiveUserProperties(_:)),
+                                                           name: USER_PROPERTIES_EVENT_NAME,
+                                                           object: nil)
                     
                     return true
                 }
@@ -235,7 +247,7 @@ open class APAnalyticsProviderFirebase: ZPAnalyticsProvider {
             return [:]
         }
         
-        guard let jsonDictionary = try? JSONSerialization.jsonObject(with: data, options: [] ) as! [String: String] else {
+        guard let jsonDictionary = try? JSONSerialization.jsonObject(with: data, options: [] ) as? [String: String] else {
             return [:]
         }
         
@@ -278,5 +290,12 @@ open class APAnalyticsProviderFirebase: ZPAnalyticsProvider {
     public func setUserProfileWithGenericUserProperties(genericUserProperties: [String : NSObject],
                                                         piiUserProperties: [String : NSObject]) {
         
+    }
+    
+    /*
+    * Trigger check user ID by react native side
+    */
+    @objc func onDidReceiveUserProperties(_ notification:Notification) {
+        checkUserID()
     }
 }
