@@ -1,3 +1,9 @@
+########################################################################################
+## REPOSITORY IS DEPRECATED!! 
+## New plugin location is https://github.com/applicaster/Zapp-Frameworks
+
+########################################################################################
+
 # zapp-analytics-plugin-firebase
 
 This repository contains the code for Google Analytics for Firebase (Android, iOS), formerly known as "Firebase Analytics"
